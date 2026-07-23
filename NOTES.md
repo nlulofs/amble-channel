@@ -16,3 +16,7 @@
 - **2026-07-22 — fingerprint words on the page.** `harbor · violet · nine · lantern`
   is a *placeholder*: real channel words derive from the Ed25519 keypair minted in
   the amble repo's Phase 3. Replace when identity lands.
+- **2026-07-23 — nick/index.html is now GENERATED.** The amble repo's
+  channel/page.py renders it from data/channel/page.json (on Nick's machine)
+  through channel/templates/page.html. Edit the data or the template there —
+  hand edits to nick/index.html get overwritten on the next render.
