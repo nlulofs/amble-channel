@@ -125,6 +125,15 @@
       </p>
     </div>
 
+    <div class="block reveal dislike" style="--d:800ms">
+      <span class="mono">Audience feedback</span>
+      <div class="dislike-row">
+        <button id="dislike-btn" type="button">&#128078; dislike this channel</button>
+        <span class="tally" id="dislike-tally"></span>
+        <span class="ack" id="dislike-ack">the only reaction available.</span>
+      </div>
+    </div>
+
   </section>
 
   <footer class="channel-footer">
@@ -140,6 +149,7 @@
 </div>
 
 <script src="../js/beacon.js" defer></script>
+<script src="../js/dislike.js" defer></script>
 <!-- ratings, not surveillance: GoatCounter — cookieless, aggregate-only -->
 <script data-goatcounter="https://goat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

@@ -445,3 +445,39 @@ body.operator .operator-bar { transform: translate(-50%, 0); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation: none; opacity: 1; transform: none; }
 }
+
+/* ---------- dislike — the only reaction available ---------- */
+
+.dislike-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.dislike button {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--onair);
+  border: 1px solid var(--onair);
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+}
+.dislike button:hover { background: var(--onair); color: var(--night); }
+.dislike button:active { transform: scale(0.96); }
+.dislike .tally {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+.dislike .ack {
+  font-style: italic;
+  color: var(--cream-dim);
+  font-size: 0.9rem;
+}
