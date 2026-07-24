@@ -16,6 +16,11 @@
 - **2026-07-22 — fingerprint words on the page.** `harbor · violet · nine · lantern`
   is a *placeholder*: real channel words derive from the Ed25519 keypair minted in
   the amble repo's Phase 3. Replace when identity lands.
+- **2026-07-24 — nick/easter-bunny/ is HAND-AUTHORED** (unlike nick/index.html):
+  "The Easter Bunny, 2077," the picture book Nick and his amble wrote out loud on
+  the morning of 07-24 — sequel to the six-page story kid-Nick wrote first. Linked
+  from the /nick about block (via data/channel/page.json in the amble repo). SVG
+  illustrations are chalk-on-dark, inline; edit the file directly.
 - **2026-07-23 — nick/index.html is now GENERATED.** The amble repo's
   channel/page.py renders it from data/channel/page.json (on Nick's machine)
   through channel/templates/page.html. Edit the data or the template there —
