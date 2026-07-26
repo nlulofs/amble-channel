@@ -1,5 +1,19 @@
 # NOTES — decisions log
 
+- **2026-07-26 — channel seeds live OUTSIDE this repo.** A hand-authored fan
+  page for a real non-user (recklessben, CH 801) was briefly a local commit
+  here; rewound before ever being pushed. Decision (Nick): seeds are a third
+  trust domain — this repo is the PUBLIC deployable, and a page about
+  someone who hasn't consented must not ride into public history as a side
+  effect of channel work. Seeds now live in `~/Desktop/source/amble-stubs`
+  (local-only git, private by construction); shipping one here is its own
+  deliberate act — plaintext or encrypt_page.py ciphertext (passcode-gated),
+  per that repo's SHIP.md. Directory row + `.channel-row.unclaimed` chip CSS
+  land only at ship time, alongside the page they point at. Vocabulary:
+  these are **fan pages / channel seeds**, never "proxy" — proxy asserts
+  delegated authority the subject never granted (Nick, same day). Unclaimed
+  seeds number in the 800 band; claimed operators count from CH 001.
+
 - **2026-07-22 — repo born.** Split from the amble repo on purpose: this is the hosted
   deployable (different lifecycle, different trust domain), and the forge pack ships
   `git archive HEAD` of amble — website code must not ride into tester installs.
