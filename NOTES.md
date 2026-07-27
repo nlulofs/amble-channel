@@ -1,5 +1,18 @@
 # NOTES — decisions log
 
+- **2026-07-26 — the platform assembles; channel content moves out.** This
+  repo transferred to the `amblechannel` org and became the PLATFORM: front
+  door, styles, js, and the Pages workflow. Channel CONTENT lives in its
+  person's own repo — CH 001 is `nlulofs/nick-amble-channel` — and
+  `.github/workflows/pages.yml` checks each channel repo out and overlays it
+  at build time. That makes "amble.channel provides pages; people own their
+  content" literally true in the repo layout, not just claimed. Pages build
+  is now `workflow` (was legacy): a failed build keeps the last good deploy
+  live. The in-repo `nick/` copy is deleted — the assembled site is the only
+  place platform and content meet. Engine publish flow: `ship()` pushes the
+  person's content repo, then pokes this repo's workflow via
+  `workflow_dispatch` to rebuild.
+
 - **2026-07-26 — channel seeds live OUTSIDE this repo.** A hand-authored fan
   page for a real non-user (recklessben, CH 801) was briefly a local commit
   here; rewound before ever being pushed. Decision (Nick): seeds are a third
