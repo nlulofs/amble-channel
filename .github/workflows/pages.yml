@@ -1,0 +1,59 @@
+# amble.channel — the platform assembles its channels, then deploys.
+#
+# The platform repo (this one) holds the front door, styles, and shared js.
+# Channel CONTENT lives in its people's own repos — user-generated content
+# on a platform that provides pages. This workflow checks each channel repo
+# out and overlays it into the site before deploying.
+#
+# Failed builds keep the last good deploy live (deploy-pages only swaps on
+# success) — safer than the old legacy build.
+#
+# Triggers: push (platform changes) and workflow_dispatch (the amble engine's
+# ship() pokes this after a channel publish, so content pushes rebuild too).
+
+name: pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Platform (front door, styles, js)
+        uses: actions/checkout@v4
+
+      # ── Channels — one checkout per person, their repo is their content ──
+      - name: CH 001 — nick (nlulofs/nick-amble-channel)
+        uses: actions/checkout@v4
+        with:
+          repository: nlulofs/nick-amble-channel
+          path: _channels/nick
+
+      - name: Overlay channels onto the platform
+        run: |
+          rm -rf nick
+          cp -R _channels/nick/nick ./nick
+          rm -rf _channels .github
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
