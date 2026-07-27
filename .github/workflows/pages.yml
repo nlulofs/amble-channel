@@ -8,14 +8,19 @@
 # Failed builds keep the last good deploy live (deploy-pages only swaps on
 # success) — safer than the old legacy build.
 #
-# Triggers: push (platform changes) and workflow_dispatch (the amble engine's
-# ship() pokes this after a channel publish, so content pushes rebuild too).
+# Triggers: push (platform changes), workflow_dispatch (the amble engine's
+# ship() pokes this after a channel publish, so content pushes rebuild too),
+# and an hourly sweep — operators without write access here (testers) can't
+# poke, so their pushed content lands on the apex within the hour instead
+# of never. Their ship() says so honestly when the poke fails.
 
 name: pages
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
 
 permissions:
   contents: read
